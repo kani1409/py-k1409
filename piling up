@@ -1,0 +1,25 @@
+from collections import deque
+def solve():
+    try:
+        t = int(input())
+        for _ in range(t):
+            n = int(input())
+            d = deque(map(int, input().split()))
+            last_cube = float('inf')
+            possible = True
+            while d:
+                if d[0] >= d[-1]:
+                    picked = d.popleft()
+                else:
+                    picked = d.pop()
+                if picked <= last_cube:
+                    last_cube = picked
+                else:
+                    possible = False
+                    break
+            print("Yes" if possible else "No")
+    except EOFError:
+        pass
+
+if __name__ == '__main__':
+    solve()
